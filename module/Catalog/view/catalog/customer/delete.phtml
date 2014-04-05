@@ -1,0 +1,46 @@
+ <?php
+ // module/Catalog/view/catalog/customer/delete.phtml:
+
+ $title = 'Delete customer';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <p>Are you sure that you want to delete this customer?</p>
+ <dl class="dl-horizontal">
+	<dt>Name</dt>
+	<dd><?php echo $this->escapeHtml($customer->name); ?></dd>
+	<dt>Street Address</dt>
+	<dd><?php echo $this->escapeHtml($customer->address1); ?></dd>
+	<?php if($customer->address2) { ?>
+		<dt> </dt>
+		<dd><?php echo $this->escapeHtml($customer->address2); ?></dd>
+	<?php } ?>
+	<dt>City</dt>
+	<dd><?php echo $this->escapeHtml($customer->city); ?></dd>
+	<dt>State</dt>
+	<dd><?php echo $this->escapeHtml($customer->state); ?></dd>
+	<dt>Zip</dt>
+	<dd><?php echo $this->escapeHtml($customer->zip); ?></dd>
+	<dt>Phone</dt>
+	<dd><?php echo $this->escapeHtml($customer->phone); ?></dd>
+	<dt>Last Updated</dt>
+	<dd><?php
+		if($customer->lastUpdate) {
+			echo $customer->lastUpdate->format('Y-m-d');
+		}
+	 ?></dd>
+</dl>
+ <?php
+ $url = $this->url('customer', array(
+     'action' => 'delete',
+     'id'     => $this->id,
+ ));
+ ?>
+ <form action="<?php echo $url; ?>" method="post">
+ <div>
+     <input type="hidden" name="id" value="<?php echo (int) $customer->id; ?>" />
+     <input type="submit" name="del" value="Yes" class="btn btn-danger" />
+     <input type="submit" name="del" value="No" class="btn btn-default" />
+ </div>
+ </form>

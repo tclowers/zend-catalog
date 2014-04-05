@@ -1,0 +1,32 @@
+<?php
+//show.phtml
+
+$title = 'Show customer';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<dl class="dl-horizontal">
+	<dt>Name</dt>
+	<dd><?php echo $this->escapeHtml($customer->name); ?></dd>
+	<dt>Street Address</dt>
+	<dd><?php echo $this->escapeHtml($customer->address1); ?></dd>
+	<dt> </dt>
+	<dd><?php echo $this->escapeHtml($customer->address2); ?></dd>
+	<dt>City</dt>
+	<dd><?php echo $this->escapeHtml($customer->city); ?></dd>
+	<dt>State</dt>
+	<dd><?php echo $this->escapeHtml($customer->state); ?></dd>
+	<dt>Zip</dt>
+	<dd><?php echo $this->escapeHtml($customer->zip); ?>kg</dd>
+	<dt>Phone</dt>
+	<dd><?php echo $this->escapeHtml($customer->phone); ?></dd>
+	<dt>Last Updated</dt>
+	<dd><?php
+		if($customer->lastUpdate) {
+			echo $customer->lastUpdate->format('Y-m-d');
+		}
+	 ?></dd>
+</dl>
+<div>
+<a href=<?php echo $this->url('customer', array('action' => 'index')) ?> class='btn btn-default'>Back</a>
+</div>

@@ -1,0 +1,44 @@
+ <?php
+ // module/Catalog/view/catalog/product/delete.phtml:
+
+ $title = 'Delete product';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <p>Are you sure that you want to delete this product?</p>
+ <dl class="dl-horizontal">
+	<dt>Name</dt>
+	<dd><?php echo $this->escapeHtml($product->name); ?></dd>
+	<dt>Description</dt>
+	<dd><?php echo $this->escapeHtml($product->description); ?></dd>
+	<dt>Width</dt>
+	<dd><?php echo $this->escapeHtml($product->width); ?>cm</dd>
+	<dt>Length</dt>
+	<dd><?php echo $this->escapeHtml($product->length); ?>cm</dd>
+	<dt>Height</dt>
+	<dd><?php echo $this->escapeHtml($product->height); ?>cm</dd>
+	<dt>Weight</dt>
+	<dd><?php echo $this->escapeHtml($product->weight); ?>kg</dd>
+	<dt>Dollar Value</dt>
+	<dd>$<?php echo $this->escapeHtml($product->dollarValue); ?></dd>
+	<dt>Last Updated</dt>
+	<dd><?php
+		if($product->lastUpdate) {
+			echo $product->lastUpdate->format('Y-m-d');
+		}
+	 ?></dd>
+</dl>
+ <?php
+ $url = $this->url('product', array(
+     'action' => 'delete',
+     'id'     => $this->id,
+ ));
+ ?>
+ <form action="<?php echo $url; ?>" method="post">
+ <div>
+     <input type="hidden" name="id" value="<?php echo (int) $product->id; ?>" />
+     <input type="submit" name="del" value="Yes" class="btn btn-danger" />
+     <input type="submit" name="del" value="No" class="btn btn-default" />
+ </div>
+ </form>

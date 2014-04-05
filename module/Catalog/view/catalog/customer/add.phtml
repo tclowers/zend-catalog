@@ -1,0 +1,42 @@
+<?php
+//add.phtml
+
+$title = 'Add new customer';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+	$form->setAttribute('action', $this->url('customer', array('action' => 'add')));
+	$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo "<div class='form-group'>";
+echo $this->formRow($form->get('name')->setAttribute('class', 'form-control'));
+echo "</div>";
+echo "<div class='form-group'>";
+echo $this->formRow($form->get('address1')->setAttribute('class', 'form-control'));
+echo "</div>";
+echo "<div class='form-group'>";
+echo $this->formRow($form->get('address2')->setAttribute('class', 'form-control'));
+echo "</div>";
+echo "<div class='form-group'>";
+echo $this->formRow($form->get('city')->setAttribute('class', 'form-control'));
+echo "</div>";
+echo "<div class='form-group'>";
+echo $this->formRow($form->get('state')->setAttribute('class', 'form-control'));
+echo "</div>";
+echo "<div class='form-group'>";
+echo $this->formRow($form->get('zip')->setAttribute('class', 'form-control'));
+echo "</div>";
+echo "<div class='form-group'>";
+echo $this->formRow($form->get('phone')->setAttribute('class', 'form-control'));
+echo "</div>";
+echo "<div>";
+echo $this->formSubmit($form->get('submit')->setAttribute('class', 'btn btn-primary'));
+echo "  <a href=" . $this->url('customer', array('action' => 'index')) . " class='btn btn-default'>Cancel</a>";
+echo "</div>";
+
+//this line can replace above lines, but it lacks the extra styling
+//echo $this->formCollection($form);
+echo $this->form()->closeTag();

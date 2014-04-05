@@ -1,0 +1,48 @@
+ <?php
+ // module/Catalog/view/catalog/product/edit.phtml:
+
+ $title = 'Edit Product';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+
+ <?php
+ $form = $this->form;
+ $form->setAttribute('action', $this->url(
+     'product',
+     array(
+         'action' => 'edit',
+         'id'     => $this->id,
+     )
+ ));
+ $form->prepare();
+
+ echo $this->form()->openTag($form);
+ echo $this->formHidden($form->get('id'));
+ echo "<div class='form-group'>";
+ echo $this->formRow($form->get('name')->setAttribute('class', 'form-control'));
+ echo "</div>";
+ echo "<div class='form-group'>";
+ echo $this->formRow($form->get('description')->setAttribute('class', 'form-control'));
+ echo "</div>";
+ echo "<div class='form-group'>";
+ echo $this->formRow($form->get('width')->setAttribute('class', 'form-control'));
+ echo "</div>";
+ echo "<div class='form-group'>";
+ echo $this->formRow($form->get('length')->setAttribute('class', 'form-control'));
+ echo "</div>";
+ echo "<div class='form-group'>";
+ echo $this->formRow($form->get('height')->setAttribute('class', 'form-control'));
+ echo "</div>";
+ echo "<div class='form-group'>";
+ echo $this->formRow($form->get('weight')->setAttribute('class', 'form-control'));
+ echo "</div>";
+ echo "<div class='form-group'>";
+ echo $this->formRow($form->get('dollarValue')->setAttribute('class', 'form-control'));
+ echo "</div>";
+ echo "<div>";
+ echo $this->formSubmit($form->get('submit')->setAttribute('class', 'btn btn-primary'));
+ echo "  <a href=" . $this->url('product', array('action' => 'index')) . " class='btn btn-default'>Cancel</a>";
+ echo "</div>";
+ //echo $this->formCollection($form);
+ echo $this->form()->closeTag();

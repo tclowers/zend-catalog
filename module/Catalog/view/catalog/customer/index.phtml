@@ -1,0 +1,36 @@
+<?php
+// module/Catalog/view/catalog/customer/index.phtml
+
+$title = 'All customers';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+	<a href="<?php echo $this->url('customer', array('action' => 'add')); ?>">Add new customer</a>
+</p>
+
+<table class="table">
+	<tr>
+		<th>Name</th>
+		<th>City</th>
+		<th>State</th>
+		<th>Phone</th>
+		<th>&nbsp;</th>
+	</tr>
+	<?php foreach($customers as $customer) : ?>
+	<tr>
+		<td><?php echo $this->escapeHtml($customer->name); ?></td>
+		<td><?php echo $this->escapeHtml($customer->city); ?></td>
+		<td><?php echo $this->escapeHtml($customer->state); ?></td>
+		<td><?php echo $this->escapeHtml($customer->phone); ?></td>
+		<td>
+			<a href="<?php echo $this->url('customer',
+				array('action' => 'show', 'id' => $customer->id)); ?>">Show</a>
+			<a href="<?php echo $this->url('customer',
+				array('action' => 'edit', 'id' => $customer->id)); ?>">Edit</a>
+			<a href="<?php echo $this->url('customer',
+				array('action' => 'delete', 'id' => $customer->id)); ?>">Delete</a>
+		</td>
+	</tr>
+	<?php endforeach; ?>
+	</table>

@@ -1,0 +1,32 @@
+<?php
+//show.phtml
+
+$title = 'Show product';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<dl class="dl-horizontal">
+	<dt>Name</dt>
+	<dd><?php echo $this->escapeHtml($product->name); ?></dd>
+	<dt>Description</dt>
+	<dd><?php echo $this->escapeHtml($product->description); ?></dd>
+	<dt>Width</dt>
+	<dd><?php echo $this->escapeHtml($product->width); ?>cm</dd>
+	<dt>Length</dt>
+	<dd><?php echo $this->escapeHtml($product->length); ?>cm</dd>
+	<dt>Height</dt>
+	<dd><?php echo $this->escapeHtml($product->height); ?>cm</dd>
+	<dt>Weight</dt>
+	<dd><?php echo $this->escapeHtml($product->weight); ?>kg</dd>
+	<dt>Dollar Value</dt>
+	<dd>$<?php echo $this->escapeHtml($product->dollarValue); ?></dd>
+	<dt>Last Updated</dt>
+	<dd><?php
+		if($product->lastUpdate) {
+			echo $product->lastUpdate->format('Y-m-d');
+		}
+	 ?></dd>
+</dl>
+<div>
+<a href=<?php echo $this->url('product', array('action' => 'index')) ?> class='btn btn-default'>Back</a>
+</div>

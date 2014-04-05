@@ -1,0 +1,18 @@
+{
+    "name": "ZendCatalog",
+    "description": "Product catalog using ZF2 with a Doctrine2 database layer",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "framework",
+        "zf2"
+    ],
+    "homepage": "http://framework.zend.com/",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.3.*",
+        "doctrine/doctrine-orm-module": "0.*"
+    },
+    "autoload": {
+        "psr-0": { "Catalog": "module/Catalog/src/" }
+    }
+}
